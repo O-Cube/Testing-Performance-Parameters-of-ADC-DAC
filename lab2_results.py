@@ -8,11 +8,13 @@ import numpy as np
 import pandas as pd
 from matplotlib import pyplot as plt
 
+path = 'C:/Users/oyand/OneDrive/Documents/Lab_data/'
+
 
 def plot_test_signal_conditioning_results():
     # Please keep the python file with the csv data files
     # Else, adjust the path
-    cfile = pd.read_csv('lab02_1.csv')
+    cfile = pd.read_csv(path+'lab02_1.csv')
     ain0 = cfile['ain0'].values.tolist()
     ain1 = cfile['ain1'].values.tolist()
     voltage = np.arange(0, 5, 5 / 255)
@@ -63,7 +65,7 @@ def plot_test_signal_conditioning_results():
 
 
 def plot_test_dac_results():
-    cfile = pd.read_csv('lab02_2.csv')
+    cfile = pd.read_csv(path+'lab02_2.csv')
     ain0 = cfile['ain0'].values.tolist()
     ain1 = cfile['ain1'].values.tolist()
 
@@ -90,11 +92,11 @@ def plot_test_dac_results():
     f = plt.figure()
     plt.step(x=[x for x in range(255)], y=ain0)
     plt.step(x=[x for x in range(255)], y=expected)
-    plt.step(x=[x for x in range(255)], y=abs(expected - ain0))
+    # plt.step(x=[x for x in range(255)], y=abs(expected - ain0))
 
     plt.xlabel('DAC inputs')
     plt.ylabel('Voltage')
-    plt.legend(['ain1 Measured ', 'ain1 expected', 'INL'])
+    plt.legend(['ain1 Measured ', 'ain1 expected'])
     plt.title('AIN0 DAC output voltage Vs input bits (Regular)')
 
     plt.show()
